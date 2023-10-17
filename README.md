@@ -1,5 +1,7 @@
 # Assisted learning for land use classification: The important role of semantic correlation between heterogeneous images
 
+This work is still under review.
+
 This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes. 
 
 It has several advantages as outlined below:
@@ -10,12 +12,10 @@ It has several advantages as outlined below:
   
 - **Simplicity and flexibility**
 
-Below is the process of the proposed method:
+Below is the process of the proposed framework:
 
 Step 1: Training teacher models using cross-entropy and dice loss.
 
 Step 2: Training student models using our framework.
 
 Step 3: Testing under missing modal conditions and maintain performance.
-
-![Image of FDA](https://github.com/WHUlwb/Assisted_learning/blob/main/Graphical_abstract.png)
