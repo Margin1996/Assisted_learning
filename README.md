@@ -1,14 +1,14 @@
-# This work is still under review.
+# This work is still under review :kissing_heart:
 
 This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes. 
 
 It has several advantages as outlined below:
 
-- **Ability to maintain performance during testing with missing modalities**
+:star: **Ability to maintain performance during testing with missing modalities**
+
+:star: **High interpretability demonstrating knowledge transferability between different modalities**
   
-- **High interpretability demonstrating knowledge transferability between different modalities**
-  
-- **Simplicity and flexibility**
+:star: **Simplicity and flexibility**
 
 Below is the process of the proposed framework:
 
