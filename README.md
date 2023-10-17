@@ -20,4 +20,4 @@ Step 2: Training student models using our framework.
 
 Step 3: Testing under arbitrary modal conditions.
 
-![Image of FDA](https://github.com/YanchaoYang/FDA/blob/master/demo_images/FDA.png)
+![Image of FDA](https://github.com/WHUlwb/Assisted_learning/blob/main/Graphical_abstract.png)
