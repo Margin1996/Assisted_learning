@@ -1,6 +1,4 @@
-# Assisted learning for land use classification: The important role of semantic correlation between heterogeneous images
-
-This work is still under review.
+# This work is still under review.
 
 This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes. 
 
