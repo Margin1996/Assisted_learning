@@ -18,6 +18,6 @@ Step 1: Training teacher models using cross-entropy and dice loss.
 
 Step 2: Training student models using our framework.
 
-Step 3: Testing under arbitrary modal conditions.
+Step 3: Testing under missing modal conditions and maintain performance.
 
 ![Image of FDA](https://github.com/WHUlwb/Assisted_learning/blob/main/Graphical_abstract.png)
