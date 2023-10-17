@@ -1,4 +1,4 @@
-# This work is still under review :kissing_heart:
+# This work is still under review :lock::
 
 This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes. 
 
