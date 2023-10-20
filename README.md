@@ -16,4 +16,4 @@ Step 1: Training teacher models using cross-entropy and dice loss.
 
 Step 2: Training student models using our framework.
 
-Step 3: Testing under missing modal conditions and maintain performance.
+Step 3: Testing.
