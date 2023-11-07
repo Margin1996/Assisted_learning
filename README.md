@@ -1,6 +1,6 @@
 # This work is still under review :lock:
 
-This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes. 
+This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes for land use classification on heterogeneous data.
 
 It has several advantages as outlined below:
 
