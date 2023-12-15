@@ -24,8 +24,7 @@ teachernet = HRnet(in_channel = 3,num_classes=config.classnum,backbone='hrnetv2_
 # teachernet = U_Net(4,config.classnum).cuda() 
 teachernet.load_state_dict(torch.load("..\model.pth")) # load the teacher model
 teachernet.eval()
-
-optimizer = torch.optim.AdamW(studentnet.parameters(), lr=config.lr, betas=(0.9, 0.999))
+optimizer = torch.optim.SGD(studentnet.parameters(), lr=config.lr, momentum=0.9, weight_decay=1e-4)
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
 iters = len(traindata)
