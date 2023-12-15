@@ -19,8 +19,7 @@ traindd = MyDataset(config.trainroot,is_training=True)
 traindata = DataLoader(traindd,batch_size=config.batch_size, shuffle=True)
 valdata = DataLoader(MyDataset(config.valroot,is_training=False), num_workers=0, batch_size=config.batch_size, shuffle=False)
 net = HRnet(in_channel=3,num_classes=config.classnum,backbone='hrnetv2_w32',pretrained=True).cuda()
-
-optimizer = torch.optim.AdamW(net.parameters(), lr=config.lr, betas=(0.9, 0.999))
+optimizer = torch.optim.SGD(net.parameters(), lr=config.lr, momentum=0.9, weight_decay=1e-4)
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
 
 iters = len(traindata)
