@@ -4,7 +4,7 @@ This is the core code of our work published in ISPRS J. :kissing_heart:
 
 This work propose an innovative assisted learning framework that employs a "teacher-student" architecture equipped with local and global distillation schemes for land use classification on heterogeneous data.
 
-![Image of work](https://github.com/WHUlwb/ASD/blob/main/network.png)
+![Image of work](https://github.com/WHUlwb/Assisted_learning/blob/main/network.png)
 
 It has several advantages as outlined below:
 
