@@ -4,19 +4,14 @@ import glob
 import random
 import os
 import cv2
-import matplotlib.pyplot as plt
-from numpy.lib.function_base import select
 from torch.utils.data import Dataset
 import torchvision.transforms as tf
-import scipy.signal
 import torchvision.transforms.functional as F
 from config import config
 import torch
 import numpy as np
 def random_roate(img1, img2, mask):
-    # 拿到角度的随机数。angle是一个-180到180之间的一个数
     angle = tf.RandomRotation.get_params([-180, 180])
-    # 对image和mask做相同的旋转操作，保证他们都旋转angle角度
     img1 = img1.rotate(angle)
     img2 = img2.rotate(angle)
     mask = mask.rotate(angle)
@@ -41,7 +36,7 @@ class MyDataset(Dataset):
     def __init__(self, root, is_training=False):
         self.is_training = is_training
         self.root = root
-        self.files_A = sorted(glob.glob(os.path.join(root, 'optical') + '/*.tif')) #RGBN
+        self.files_A = sorted(glob.glob(os.path.join(root, 'optical') + '/*.tif')) #optical
         self.files_B = sorted(glob.glob(os.path.join(root, 'sar') + '/*.tif')) #SAR
         self.files_D = sorted(glob.glob(os.path.join(root, 'label') + '/*.tif')) #label
         self.trans = tf.Compose([
@@ -90,58 +85,6 @@ class MyDataset(Dataset):
         mask = torch.from_numpy(np.array(mask)).long()
         seg_labels = torch.from_numpy(np.array(seg_labels)).type(torch.FloatTensor)
         # return image1, image2, mask, seg_labels
-        return img_RGB, image2, mask, seg_labels #仅适用RGB
-
-
+        return img_RGB, image2, mask, seg_labels #only RGB
     def __len__(self):
         return len(self.files_A)
-
-class LossHistory():
-    def __init__(self, log_dir):
-        import datetime
-        curr_time = datetime.datetime.now()
-        time_str = datetime.datetime.strftime(curr_time,'%Y_%m_%d_%H_%M_%S')
-        self.log_dir    = log_dir
-        self.time_str   = time_str
-        self.save_path  = os.path.join(self.log_dir, "loss_" + str(self.time_str))
-        self.losses     = []
-        self.val_loss   = []
-        
-        os.makedirs(self.save_path)
-
-    def append_loss(self, loss, val_loss):
-        self.losses.append(loss)
-        self.val_loss.append(val_loss)
-        with open(os.path.join(self.save_path, "epoch_loss_" + str(self.time_str) + ".txt"), 'a') as f:
-            f.write(str(loss))
-            f.write("\n")
-        with open(os.path.join(self.save_path, "epoch_val_loss_" + str(self.time_str) + ".txt"), 'a') as f:
-            f.write(str(val_loss))
-            f.write("\n")
-        self.loss_plot()
-
-    def loss_plot(self):
-        iters = range(len(self.losses))
-
-        plt.figure()
-        plt.plot(iters, self.losses, 'green', linewidth = 2, linestyle = '--', label='train loss')
-        plt.plot(iters, self.val_loss, 'blue', linewidth = 2, linestyle = '--', label='val loss')
-        try:
-            if len(self.losses) < 25:
-                num = 5
-            else:
-                num = 25
-            
-            plt.plot(iters, scipy.signal.savgol_filter(self.losses, num, 3), 'red',  linewidth = 2, label='smooth train loss')
-            plt.plot(iters, scipy.signal.savgol_filter(self.val_loss, num, 3), 'darkorchid', linewidth = 2, label='smooth val loss')
-        except:
-            pass
-
-        plt.grid(True)
-        plt.xlabel('Epoch')
-        plt.ylabel('Loss')
-        plt.legend(loc="upper right")
-
-        plt.savefig(os.path.join(self.save_path, "epoch_loss_" + str(self.time_str) + ".png"))
-        plt.cla()
-        plt.close("all")
