@@ -7,7 +7,7 @@ from .backbone import BN_MOMENTUM, hrnet_classification
 
 
 class HRnet_Backbone(nn.Module):
-    def __init__(self, in_channel, backbone = 'hrnetv2_w18', pretrained = False):
+    def __init__(self, in_channel, backbone = 'hrnetv2_w18'):
         super(HRnet_Backbone, self).__init__()
         self.model    = hrnet_classification(backbone = backbone, pretrained = pretrained)
         del self.model.incre_modules
