@@ -21,3 +21,6 @@ Step 1: Training teacher models using cross-entropy and dice loss. (Using train_
 Step 2: Training student models using our framework. (Using train_s.py to train the teachr.)
 
 Step 3: Testing.
+
+--------------------------------------------------------------
+#### Thanks to [bubbliiiing](https://github.com/bubbliiiing) for providing the open-source project [HRnet](https://github.com/bubbliiiing/hrnet-pytorch/).
