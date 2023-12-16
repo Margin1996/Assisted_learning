@@ -19,8 +19,8 @@ scaler = Gradscaler()
 traindd = MyDataset(config.trainroot,is_training=True)
 traindata = DataLoader(traindd,batch_size=config.batch_size, shuffle=True)
 valdata = DataLoader(MyDataset(config.valroot,is_training=False), num_workers=0, batch_size=config.batch_size, shuffle=False)
-studentnet = HRnet(in_channel = 1,num_classes=config.classnum,backbone='hrnetv2_w32',pretrained=True).cuda() #target modality
-teachernet = HRnet(in_channel = 3,num_classes=config.classnum,backbone='hrnetv2_w32',pretrained=False).cuda() #auxiliary modality
+studentnet = HRnet(in_channel = 1,num_classes=config.classnum,backbone='hrnetv2_w32').cuda() #target modality
+teachernet = HRnet(in_channel = 3,num_classes=config.classnum,backbone='hrnetv2_w32').cuda() #auxiliary modality
 # teachernet = U_Net(4,config.classnum).cuda() 
 teachernet.load_state_dict(torch.load("..\model.pth")) # load the teacher model
 teachernet.eval()
